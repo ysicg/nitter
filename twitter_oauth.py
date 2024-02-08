@@ -27,14 +27,14 @@ bearer_token_req = requests.post("https://api.twitter.com/oauth2/token",
 	data='grant_type=client_credentials'
 ).json()
 bearer_token = ' '.join(str(x) for x in bearer_token_req.values())
-print(bearer_token)
+# print(bearer_token)
 
 # The bearer token is immutable
 # Bearer AAAAAAAAAAAAAAAAAAAAAFXzAwAAAAAAMHCxpeSDG1gLNLghVe8d74hl6k4%3DRUMF4xAQLsbeBhTSRrCiQpJtxoGWeyHrDb5te2jpGskWDFW82F
 guest_token = requests.post("https://api.twitter.com/1.1/guest/activate.json", headers={
 	'Authorization': bearer_token,
 }).json()['guest_token']
-print(guest_token)
+# print(guest_token)
 
 twitter_header = {
     'Authorization': bearer_token,
