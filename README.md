@@ -23,9 +23,12 @@ Answer: y
 
 ### Configure
 
+Make sure you're in the `guest_accounts` branch
+
 `cp nitter.example.conf nitter.conf`
 
 Customize nitter.conf (set a different port for example)
+
 
 ### Add accounts
 
