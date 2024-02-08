@@ -2,10 +2,12 @@
 
 import requests
 import base64
-
+import json
 
 username = ''
 password = ''
+
+
 
 if not username or not password:
 	exit(f'Username and password required in {__file__}.')
@@ -152,7 +154,22 @@ for t4_subtask in task4.get('subtasks', []):
 				authentication = t5_subtask['open_account']
 
 
-print(authentication)
+
+try:
+	with open("guest_accounts.json", "r") as f:
+		accounts = json.load(f)
+except FileNotFoundError as e:
+	accounts = []
+
+accounts.append(authentication)
+
+with open("guest_accounts.json", "w") as f:
+	json.dump(accounts, f)
+
+print(f"Added account {username} to Nitter.")
+
+
+
 		
 # {
 # 	'attribution_event': 'login',
