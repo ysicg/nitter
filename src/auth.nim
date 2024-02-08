@@ -202,7 +202,9 @@ proc initAccountPool*(cfg: Config; path: string) =
     quit 1
 
   let accountsPrePurge = accountPool.len
-  accountPool.keepItIf(not it.hasExpired)
+
+  # This line discards accounts older that 30 days, but we don't want that for real accounts as they don't expire after 30 days.
+  # accountPool.keepItIf(not it.hasExpired)
 
   log "Successfully added ", accountPool.len, " valid accounts."
   if accountsPrePurge > accountPool.len:
